@@ -1,0 +1,908 @@
+1
+00:00:05,204 --> 00:00:07,784
+<v ->Hi I'm Bob Tabor and in this series of videos,</v>
+
+2
+00:00:07,785 --> 00:00:09,331
+over 75 videos,
+
+3
+00:00:09,332 --> 00:00:10,813
+I'm going to demonstrate how to build apps
+
+4
+00:00:10,814 --> 00:00:15,813
+that can be sold or downloaded for free on the Windows Store
+
+5
+00:00:16,030 --> 00:00:18,066
+for Windows desktop, or phone,
+
+6
+00:00:18,067 --> 00:00:21,863
+or wherever Universal Windows Platform apps can be used.
+
+7
+00:00:21,864 --> 00:00:25,970
+Which will soon include devices like the Xbox One,
+
+8
+00:00:25,971 --> 00:00:29,383
+Microsoft Hub, and even the HoloLens.
+
+9
+00:00:29,384 --> 00:00:32,006
+Now that term Universal Windows Platform I just used
+
+10
+00:00:32,007 --> 00:00:35,419
+it describes tools and APIs that you can utilize
+
+11
+00:00:35,420 --> 00:00:38,460
+to build apps that run universally
+
+12
+00:00:38,461 --> 00:00:40,923
+across all new Windows devices.
+
+13
+00:00:40,924 --> 00:00:44,154
+And the beauty is that you can write one application
+
+14
+00:00:44,155 --> 00:00:48,966
+and it'll look great on many different screen resolutions
+
+15
+00:00:48,967 --> 00:00:50,609
+and device form factors.
+
+16
+00:00:50,610 --> 00:00:53,051
+And really that's one of the most important things
+
+17
+00:00:53,052 --> 00:00:55,877
+that I'm going to discuss and demonstrate
+
+18
+00:00:55,878 --> 00:00:57,840
+in this series of lessons.
+
+19
+00:00:57,841 --> 00:01:01,231
+So this series is intended for an absolute
+
+20
+00:01:01,232 --> 00:01:03,407
+beginner audience.
+
+21
+00:01:03,408 --> 00:01:06,799
+Having said that, you should already have some familiarity
+
+22
+00:01:06,800 --> 00:01:08,612
+with C# and Visual Studio.
+
+23
+00:01:08,613 --> 00:01:11,780
+And I want to assume that you're watching this after
+
+24
+00:01:11,781 --> 00:01:15,417
+making sure that you've either watched or at least
+
+25
+00:01:15,418 --> 00:01:19,054
+you understand all the concepts that I discuss in
+
+26
+00:01:19,055 --> 00:01:22,020
+the C# fundamentals for absolute beginners series
+
+27
+00:01:22,021 --> 00:01:24,056
+on Microsoft Virtual Academy in channel nine.
+
+28
+00:01:24,057 --> 00:01:28,622
+You can find it at this URL on the screen.
+
+29
+00:01:28,623 --> 00:01:31,950
+Now if you're already an experienced developer
+
+30
+00:01:31,951 --> 00:01:34,776
+then -- fair warning -- quite honestly here,
+
+31
+00:01:34,777 --> 00:01:37,539
+this course is going to move very slow for you.
+
+32
+00:01:37,540 --> 00:01:39,375
+And we did that on purpose.
+
+33
+00:01:39,376 --> 00:01:41,710
+And honestly there's probably some better resources
+
+34
+00:01:41,711 --> 00:01:43,554
+out there where you can spend your time.
+
+35
+00:01:43,555 --> 00:01:47,639
+I'd recommend that you watch Andy Wigley and Shen Chauhan
+
+36
+00:01:47,640 --> 00:01:50,626
+in a series that they created called
+
+37
+00:01:50,627 --> 00:01:54,017
+a developers guide to Windows 10.
+
+38
+00:01:54,018 --> 00:01:56,481
+Great, up to date, it's awesome.
+
+39
+00:01:56,482 --> 00:01:57,815
+And I'd recommend you start there
+
+40
+00:01:57,816 --> 00:02:00,726
+if you're already an experienced developer.
+
+41
+00:02:00,727 --> 00:02:04,257
+Now this is the fourth version of this particular video
+
+42
+00:02:04,258 --> 00:02:06,081
+series that I've created.
+
+43
+00:02:06,082 --> 00:02:09,643
+And I started way back on the Windows Phone 7
+
+44
+00:02:09,644 --> 00:02:11,734
+in about 2009 / 2010.
+
+45
+00:02:11,735 --> 00:02:14,614
+Each time that I release a version of this series
+
+46
+00:02:14,615 --> 00:02:17,728
+I'm asked a few questions repeatedly.
+
+47
+00:02:17,729 --> 00:02:19,722
+So I want to answer those right up front
+
+48
+00:02:19,723 --> 00:02:24,021
+so that there's no misunderstanding.
+
+49
+00:02:24,022 --> 00:02:28,597
+First of all, you must use Windows 10
+
+50
+00:02:28,598 --> 00:02:31,178
+to build apps for Windows 10,
+
+51
+00:02:31,179 --> 00:02:33,598
+to build Universal Windows Platform apps.
+
+52
+00:02:33,599 --> 00:02:37,065
+You cannot use Windows 8.1, or Windows 8,
+
+53
+00:02:37,066 --> 00:02:40,009
+or Windows 7, or Windows XP.
+
+54
+00:02:40,010 --> 00:02:44,201
+Alright, you have to use Windows 10, that's number one.
+
+55
+00:02:44,202 --> 00:02:45,950
+Number two, you have to use Visual Studio 2015.
+
+56
+00:02:45,951 --> 00:02:47,859
+Now I recommend that you use
+
+57
+00:02:47,860 --> 00:02:50,237
+Visual Studio 2015 Community Edition,
+
+58
+00:02:50,238 --> 00:02:54,312
+which is a free edition with all the features of Pro edition
+
+59
+00:02:54,313 --> 00:02:57,789
+but it's intended for individuals who are just learning
+
+60
+00:02:57,790 --> 00:03:02,183
+or creating a community based projects.
+
+61
+00:03:02,184 --> 00:03:05,874
+Now frankly you can use other editions of Visual Studio
+
+62
+00:03:05,875 --> 00:03:09,212
+but not previous versions.
+
+63
+00:03:09,213 --> 00:03:11,581
+You must use version 2015 to build
+
+64
+00:03:11,582 --> 00:03:13,255
+Universal Windows Platform apps, that's number two.
+
+65
+00:03:13,256 --> 00:03:18,255
+Number three, you're going to see me use the phone emulator
+
+66
+00:03:20,082 --> 00:03:22,940
+in order to run and test my applications occasionally.
+
+67
+00:03:22,941 --> 00:03:25,233
+It'll look like a little phone running on my screen
+
+68
+00:03:25,234 --> 00:03:27,366
+with a little menu off to the right hand side.
+
+69
+00:03:27,367 --> 00:03:31,494
+It's actually running software called Hyper-V
+
+70
+00:03:31,495 --> 00:03:35,846
+which is a platform for running virtual machines
+
+71
+00:03:35,847 --> 00:03:37,552
+on your desktop.
+
+72
+00:03:37,553 --> 00:03:41,371
+And so it's running the Windows Phone 10 operating system
+
+73
+00:03:41,372 --> 00:03:43,685
+in a little virtual machine that looks like a phone.
+
+74
+00:03:43,686 --> 00:03:46,266
+Now you might need special hardware
+
+75
+00:03:46,267 --> 00:03:47,610
+to run the phone emulator.
+
+76
+00:03:47,611 --> 00:03:52,559
+Specifically your motherboard and your chip
+
+77
+00:03:52,560 --> 00:03:55,087
+must support a technology called SLAT,
+
+78
+00:03:55,088 --> 00:03:57,903
+or rather "Second Level Address Translation".
+
+79
+00:03:57,904 --> 00:04:01,967
+Now most modern motherboards will support this,
+
+80
+00:04:01,968 --> 00:04:05,305
+however not all motherboards and chips support this.
+
+81
+00:04:05,306 --> 00:04:09,145
+Most importantly, I can't help you with this.
+
+82
+00:04:09,146 --> 00:04:12,781
+I understand very little about it.
+
+83
+00:04:12,782 --> 00:04:16,921
+If you get errors during install of Visual Studio 2015
+
+84
+00:04:16,922 --> 00:04:19,864
+then you can search Microsoft's forums for help,
+
+85
+00:04:19,865 --> 00:04:22,168
+but again I can't help you.
+
+86
+00:04:22,169 --> 00:04:25,112
+I've tried to help in the past and honestly I've
+
+87
+00:04:25,113 --> 00:04:27,608
+probably confused more people than I've actually helped.
+
+88
+00:04:27,609 --> 00:04:29,581
+Now the worst case scenario if you can't get
+
+89
+00:04:29,582 --> 00:04:32,386
+the emulator running on your local machine,
+
+90
+00:04:32,387 --> 00:04:36,024
+is that you might need to deploy your apps
+
+91
+00:04:36,025 --> 00:04:38,498
+to a physical phone device running
+
+92
+00:04:38,499 --> 00:04:40,876
+either the full edition or a beta edition of Windows
+
+93
+00:04:40,877 --> 00:04:45,079
+Phone 10 for the purpose of testing.
+
+94
+00:04:45,080 --> 00:04:46,177
+It's simple to do,
+
+95
+00:04:46,178 --> 00:04:47,905
+however I don't demonstrate how to do that
+
+96
+00:04:47,906 --> 00:04:49,100
+in this series of videos.
+
+97
+00:04:49,101 --> 00:04:51,073
+There are articles online that'll show you how.
+
+98
+00:04:51,074 --> 00:04:54,241
+Now if you have all these things in place
+
+99
+00:04:54,242 --> 00:04:56,075
+then, number four, you're going to need to
+
+100
+00:04:56,076 --> 00:04:57,719
+turn on Developer Mode.
+
+101
+00:04:57,720 --> 00:05:01,398
+And the way that you get that is you open up Settings
+
+102
+00:05:01,399 --> 00:05:05,067
+in Windows 10 and you go to Update & Security.
+
+103
+00:05:05,068 --> 00:05:08,671
+And then on the left hand side you select For Developers,
+
+104
+00:05:08,672 --> 00:05:11,455
+and make sure to choose Developer mode.
+
+105
+00:05:11,456 --> 00:05:13,791
+And if it asks you to save then go ahead and save.
+
+106
+00:05:13,792 --> 00:05:16,266
+I'm not sure, I can't remember that particular part.
+
+107
+00:05:16,267 --> 00:05:18,538
+But make sure that you have that set.
+
+108
+00:05:18,539 --> 00:05:20,821
+Visual Studio will probably give you an error
+
+109
+00:05:20,822 --> 00:05:23,092
+if you first run an application if you don't
+
+110
+00:05:23,093 --> 00:05:25,471
+have that setting set up, okay?
+
+111
+00:05:25,472 --> 00:05:27,924
+Now this series of videos
+
+112
+00:05:27,925 --> 00:05:32,031
+is about 15 or 16 hours long, it's fairly comprehensive.
+
+113
+00:05:32,032 --> 00:05:34,506
+And one of the most important new features
+
+114
+00:05:34,507 --> 00:05:37,822
+of this training series is that I'm going to give you
+
+115
+00:05:37,823 --> 00:05:40,499
+homework assignments called challenges.
+
+116
+00:05:40,500 --> 00:05:43,166
+And I'll give you all the tools that you need
+
+117
+00:05:43,167 --> 00:05:46,174
+to build an app to my specifications
+
+118
+00:05:46,175 --> 00:05:48,179
+and then I'm even going to give you the solution
+
+119
+00:05:48,180 --> 00:05:50,440
+to the challenge in the form of a video
+
+120
+00:05:50,441 --> 00:05:52,040
+in case you get stuck.
+
+121
+00:05:52,041 --> 00:05:55,208
+And that's a great way for you,
+
+122
+00:05:55,209 --> 00:05:57,735
+and you should definitely do these challenges
+
+123
+00:05:57,736 --> 00:06:00,413
+where you "get your hands dirty in the code"
+
+124
+00:06:00,414 --> 00:06:01,650
+as I like to say it.
+
+125
+00:06:01,651 --> 00:06:03,623
+We're also going to build a little cheat sheet
+
+126
+00:06:03,624 --> 00:06:05,127
+for review purposes,
+
+127
+00:06:05,128 --> 00:06:07,100
+and then you can reference it after you finish
+
+128
+00:06:07,101 --> 00:06:08,295
+the series of videos.
+
+129
+00:06:08,296 --> 00:06:10,428
+Feel free to add to the cheat sheet
+
+130
+00:06:10,429 --> 00:06:12,423
+anything that you think might be useful
+
+131
+00:06:12,424 --> 00:06:15,302
+as you go forward and start building your own applications.
+
+132
+00:06:15,303 --> 00:06:18,172
+And then finally in the last half of the series,
+
+133
+00:06:18,173 --> 00:06:21,051
+we're going to build four entire applications
+
+134
+00:06:21,052 --> 00:06:25,872
+and even one of them for inclusion in the Windows Store.
+
+135
+00:06:25,873 --> 00:06:27,451
+Now these apps are going to show you
+
+136
+00:06:27,452 --> 00:06:30,459
+how to think like an app developer
+
+137
+00:06:30,460 --> 00:06:32,880
+from concept through implementation.
+
+138
+00:06:32,881 --> 00:06:37,264
+And we'll use a variety of different techniques, and APIs,
+
+139
+00:06:37,265 --> 00:06:39,482
+and tools and approaches to learn how to
+
+140
+00:06:39,483 --> 00:06:42,511
+interact with sensors on a given device.
+
+141
+00:06:42,512 --> 00:06:46,149
+How to access media libraries,
+
+142
+00:06:46,150 --> 00:06:50,042
+how to access online services that provide weather updates.
+
+143
+00:06:50,043 --> 00:06:53,721
+And even allow us to tap into fun services
+
+144
+00:06:53,722 --> 00:06:56,793
+like Marvel comics web API,
+
+145
+00:06:56,794 --> 00:06:59,758
+that allow us to retrieve back all their characters
+
+146
+00:06:59,759 --> 00:07:02,820
+and look through them and look through the artwork.
+
+147
+00:07:02,821 --> 00:07:07,704
+Now many of the videos in the series will have a zip file
+
+148
+00:07:07,705 --> 00:07:10,788
+associated with them that contains the code
+
+149
+00:07:10,789 --> 00:07:14,136
+that I wrote while recording the video.
+
+150
+00:07:14,137 --> 00:07:16,740
+Or in the case of challenges like I just described
+
+151
+00:07:16,741 --> 00:07:17,720
+a moment ago,
+
+152
+00:07:17,721 --> 00:07:20,355
+it'll contain the images that you need, any instructions,
+
+153
+00:07:20,356 --> 00:07:22,648
+or any other files that'll be required
+
+154
+00:07:22,649 --> 00:07:25,336
+in order to actually perform that challenge.
+
+155
+00:07:25,337 --> 00:07:28,418
+Now the file will be on the page
+
+156
+00:07:28,419 --> 00:07:32,246
+where you're currently watching the video,
+
+157
+00:07:32,247 --> 00:07:34,476
+or where you originally downloaded the video from.
+
+158
+00:07:34,477 --> 00:07:36,855
+So please before you ask in the comments,
+
+159
+00:07:36,856 --> 00:07:38,561
+"I can't find the download link,
+
+160
+00:07:38,562 --> 00:07:40,716
+where's the download link, the download link!"
+
+161
+00:07:40,717 --> 00:07:45,716
+Please hit Control + f on your keyboard in your web browser
+
+162
+00:07:46,326 --> 00:07:49,067
+and search for the term "download".
+
+163
+00:07:49,068 --> 00:07:51,872
+If there's no link to download a file
+
+164
+00:07:51,873 --> 00:07:56,566
+then that particular video does not have files to download.
+
+165
+00:07:56,567 --> 00:08:00,096
+Please search for the term download first.
+
+166
+00:08:00,097 --> 00:08:04,320
+Now while this is a very inclusive set of videos
+
+167
+00:08:04,321 --> 00:08:08,021
+I mean 15 to 16 hours is a lot of content to go through.
+
+168
+00:08:08,022 --> 00:08:09,866
+This is still really just an introduction.
+
+169
+00:08:09,867 --> 00:08:12,447
+I can't possibly show you everything
+
+170
+00:08:12,448 --> 00:08:17,045
+that the Universal Windows Platform contains.
+
+171
+00:08:17,046 --> 00:08:20,191
+You should treat this as a gentle introduction only,
+
+172
+00:08:20,192 --> 00:08:21,833
+but you should always refer back to
+
+173
+00:08:21,834 --> 00:08:25,428
+Microsoft's own documentation at the Windows Dev Center
+
+174
+00:08:25,429 --> 00:08:27,316
+for comprehensive explanation
+
+175
+00:08:27,317 --> 00:08:30,526
+how to get the most out of Universal Windows Platform.
+
+176
+00:08:30,527 --> 00:08:35,526
+And you can access that at http://dev.windows.com
+
+177
+00:08:36,319 --> 00:08:38,920
+Now remember that you can't just watch
+
+178
+00:08:38,921 --> 00:08:41,597
+a screen cast tutorial training series
+
+179
+00:08:41,598 --> 00:08:45,256
+the way that you would watch a movie or a sitcom on TV.
+
+180
+00:08:45,257 --> 00:08:48,188
+You're going to need to become an active learner.
+
+181
+00:08:48,189 --> 00:08:51,987
+Don't be afraid to rewind or even rewatch an entire video
+
+182
+00:08:51,988 --> 00:08:54,951
+or a portion of the video if at first
+
+183
+00:08:54,952 --> 00:08:57,086
+something doesn't really make a lot of sense to you.
+
+184
+00:08:57,087 --> 00:09:00,721
+Or look at the documentation at the Windows Dev Center
+
+185
+00:09:00,722 --> 00:09:02,876
+at the link I just shared with you.
+
+186
+00:09:02,877 --> 00:09:06,118
+For more details surrounding the given topic
+
+187
+00:09:06,119 --> 00:09:08,945
+that we're discussing at that moment in the videos.
+
+188
+00:09:08,946 --> 00:09:11,653
+You learn best whenever you use different
+
+189
+00:09:11,654 --> 00:09:16,603
+modalities to learn the same idea, the same content.
+
+190
+00:09:16,604 --> 00:09:20,272
+And ultimately the videos that I'm presenting are just
+
+191
+00:09:20,273 --> 00:09:23,195
+one tool to help you realize your aspirations
+
+192
+00:09:23,196 --> 00:09:27,120
+of building apps for sale in the Windows Store.
+
+193
+00:09:27,121 --> 00:09:29,477
+Now, on a personal note if you like what I do here
+
+194
+00:09:29,478 --> 00:09:30,842
+please visit me at
+
+195
+00:09:30,843 --> 00:09:35,842
+http://www.LearnVisualStudio.NET
+
+196
+00:09:36,198 --> 00:09:37,423
+where I help beginners get their
+
+197
+00:09:37,424 --> 00:09:39,396
+first software development job
+
+198
+00:09:39,397 --> 00:09:40,570
+building Windows and web apps
+
+199
+00:09:40,571 --> 00:09:42,340
+into world's best companies.
+
+200
+00:09:42,341 --> 00:09:44,793
+There are tons of challenge exercises there
+
+201
+00:09:44,794 --> 00:09:48,089
+and deeper insights into writing software using
+
+202
+00:09:48,090 --> 00:09:51,556
+Visual Studio, and C#, and ASP.NET and more.
+
+203
+00:09:51,557 --> 00:09:55,502
+Alright now finally I'd like to take a moment and thank
+
+204
+00:09:55,503 --> 00:09:58,628
+the hundreds of thousands of people who have watched
+
+205
+00:09:58,629 --> 00:10:01,006
+the previous versions of this series.
+
+206
+00:10:01,007 --> 00:10:04,579
+And for those who took the time to actually tell Microsoft
+
+207
+00:10:04,580 --> 00:10:07,022
+that you wanted more of this type of training.
+
+208
+00:10:07,023 --> 00:10:10,029
+Your feedback made this happen,
+
+209
+00:10:10,030 --> 00:10:11,394
+so thank you very much.
+
+210
+00:10:11,395 --> 00:10:15,352
+Also I want to thank Andy Wigley who patiently answered
+
+211
+00:10:15,353 --> 00:10:18,786
+all of the questions that I had and gave me a ton of advice
+
+212
+00:10:18,787 --> 00:10:20,226
+while I was building this series.
+
+213
+00:10:20,227 --> 00:10:21,613
+I'm very thankful for his guidance
+
+214
+00:10:21,614 --> 00:10:23,479
+as I worked on these lessons.
+
+215
+00:10:23,480 --> 00:10:28,417
+And ultimately this series was championed primarily
+
+216
+00:10:28,418 --> 00:10:31,479
+by Clint Rutkas who has been involved in almost all of the
+
+217
+00:10:31,480 --> 00:10:34,017
+video projects that I have worked on for Microsoft.
+
+218
+00:10:34,018 --> 00:10:36,545
+Without Clint, none of this would be possible.
+
+219
+00:10:36,546 --> 00:10:38,146
+So please reach out to him on Twitter
+
+220
+00:10:38,147 --> 00:10:40,299
+and let him know how much you appreciate his good work.
+
+221
+00:10:40,300 --> 00:10:43,510
+Okay so enough setup.
+
+222
+00:10:43,511 --> 00:10:48,510
+You've got Visual Studio 2015 running on Windows 10
+
+223
+00:10:48,833 --> 00:10:51,392
+and you've turned on Developer mode in Settings
+
+224
+00:10:51,393 --> 00:10:53,258
+like we looked at just a moment ago,
+
+225
+00:10:53,259 --> 00:10:54,784
+and you're wondering what comes next.
+
+226
+00:10:54,785 --> 00:10:56,939
+Well we're going to get started in the very next video.
+
+227
+00:10:56,940 --> 00:10:58,133
+We'll see you there.  
+
